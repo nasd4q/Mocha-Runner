@@ -9,12 +9,9 @@ export function activate(context: vscode.ExtensionContext) {
   const codeLensProvider = new JestRunnerCodeLensProvider();
   const config = new JestRunnerConfig();
 
-  const runJest = vscode.commands.registerCommand('extension.runJest', async (argument: object | string) => {
-    if (typeof argument === 'string') {
-      jestRunner.runCurrentTest(argument);
-    } else {
-      jestRunner.runCurrentTest();
-    }
+  const runJest = vscode.commands.registerCommand('extension.runMocha', async (argument: object | string) => {
+    vscode.window.showInformationMessage("argument.toString()");
+    vscode.window.showInformationMessage(argument.toString());
   });
   const runJestFile = vscode.commands.registerCommand('extension.runJestFile', async () => jestRunner.runCurrentFile());
   const debugJest = vscode.commands.registerCommand('extension.debugJest', async (argument: object | string) => {
