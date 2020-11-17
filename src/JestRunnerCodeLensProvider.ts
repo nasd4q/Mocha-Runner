@@ -1,5 +1,5 @@
 import { parse, ParsedNode } from 'jest-editor-support';
-import { CodeLens, CodeLensProvider, Range, TextDocument } from 'vscode';
+import { CancellationToken, CodeLens, CodeLensProvider, ProviderResult, Range, TextDocument } from 'vscode';
 import { findFullTestName, escapeRegExp } from './util';
 
 function getTestsBlocks(parsedNode: ParsedNode, parseResults: ParsedNode[]): CodeLens[] {
@@ -39,7 +39,8 @@ function getTestsBlocks(parsedNode: ParsedNode, parseResults: ParsedNode[]): Cod
 }
 
 export class JestRunnerCodeLensProvider implements CodeLensProvider {
-  public async provideCodeLenses(document: TextDocument): Promise<CodeLens[]> {
+
+  provideCodeLenses<T>(document: TextDocument, token: CancellationToken): ProviderResult<T[]> {
     const parseResults = parse(document.fileName, document.getText()).root.children;
 
     const codeLens = [];

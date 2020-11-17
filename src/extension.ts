@@ -1,12 +1,13 @@
 'use strict';
 import * as vscode from 'vscode';
+import { CodeLensProvider } from 'vscode';
 import { JestRunner } from './jestRunner';
 import { JestRunnerCodeLensProvider } from './JestRunnerCodeLensProvider';
 import { JestRunnerConfig } from './jestRunnerConfig';
 
 export function activate(context: vscode.ExtensionContext) {
   const jestRunner = new JestRunner();
-  const codeLensProvider = new JestRunnerCodeLensProvider();
+  const codeLensProvider: CodeLensProvider = new JestRunnerCodeLensProvider();
   const config = new JestRunnerConfig();
 
   const runJest = vscode.commands.registerCommand('extension.runMocha', async (argument: object | string) => {
