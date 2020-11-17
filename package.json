@@ -22,77 +22,80 @@
     ],
     "main": "./dist/extension",
     "contributes": {
-        "configuration": [{
-            "title": "Jest-Runner Config",
-            "properties": {
-                "jestrunner.configPath": {
-                    "type": "string",
-                    "default": "",
-                    "description": "Jest config path (relative to ${workFolder} e.g. jest-config.json)",
-                    "scope": "window"
-                },
-                "jestrunner.jestPath": {
-                    "type": "string",
-                    "default": "",
-                    "description": "Absolute path to jest bin file (e.g. /usr/lib/node_modules/jest/bin/jest.js)",
-                    "scope": "window"
-                },
-                "jestrunner.projectPath": {
-                    "type": "string",
-                    "default": "",
-                    "description": "Absolute path to project directory (e.g. /home/me/project/sub-folder)",
-                    "scope": "window"
-                },
-                "jestrunner.debugOptions": {
-                    "type": "object",
-                    "default": {},
-                    "description": "Add or overwrite vscode debug configurations (only in debug mode) (e.g. { \"args\": [\"--no-cache\"] })",
-                    "scope": "window"
-                },
-                "jestrunner.runOptions": {
-                    "type": "array",
-                    "default": [],
-                    "items": {
+        "configuration": [
+            {
+                "title": "Jest-Runner Config",
+                "properties": {
+                    "jestrunner.configPath": {
                         "type": "string",
-                        "description": "CLI Option e.g. --coverage"
+                        "default": "",
+                        "description": "Jest config path (relative to ${workFolder} e.g. jest-config.json)",
+                        "scope": "window"
                     },
-                    "description": "Add CLI Options to the Jest Command e.g. https://jestjs.io/docs/en/cli",
-                    "scope": "window"
-                },
-                "jestrunner.jestCommand": {
-                    "type": "string",
-                    "default": "",
-                    "description": "Define an alternative Jest command (e.g. for Create React App and similar abstractions)",
-                    "scope": "window"
-                },
-                "jestrunner.disableCodeLens": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "Disable CodeLens feature",
-                    "scope": "window"
-                },
-                "jestrunner.codeLensSelector": {
-                    "type": "string",
-                    "default": "**/*.{test,spec}.{js,jsx,ts,tsx}",
-                    "description": "CodeLens will be shown on files matching this pattern"
-                },
-                "jestrunner.enableYarnPnpSupport": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "Enable if you are using Yarn 2 with Plug'n'Play",
-                    "scope": "window"
-                },
-                "jestrunner.detectYarnPnpJestBin": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "Auto-detect path on Linux/Unix systems to Jest bin (Yarn 2 Pnp)",
-                    "scope": "window"
+                    "jestrunner.jestPath": {
+                        "type": "string",
+                        "default": "",
+                        "description": "Absolute path to jest bin file (e.g. /usr/lib/node_modules/jest/bin/jest.js)",
+                        "scope": "window"
+                    },
+                    "jestrunner.projectPath": {
+                        "type": "string",
+                        "default": "",
+                        "description": "Absolute path to project directory (e.g. /home/me/project/sub-folder)",
+                        "scope": "window"
+                    },
+                    "jestrunner.debugOptions": {
+                        "type": "object",
+                        "default": {},
+                        "description": "Add or overwrite vscode debug configurations (only in debug mode) (e.g. { \"args\": [\"--no-cache\"] })",
+                        "scope": "window"
+                    },
+                    "jestrunner.runOptions": {
+                        "type": "array",
+                        "default": [],
+                        "items": {
+                            "type": "string",
+                            "description": "CLI Option e.g. --coverage"
+                        },
+                        "description": "Add CLI Options to the Jest Command e.g. https://jestjs.io/docs/en/cli",
+                        "scope": "window"
+                    },
+                    "jestrunner.jestCommand": {
+                        "type": "string",
+                        "default": "",
+                        "description": "Define an alternative Jest command (e.g. for Create React App and similar abstractions)",
+                        "scope": "window"
+                    },
+                    "jestrunner.disableCodeLens": {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "Disable CodeLens feature",
+                        "scope": "window"
+                    },
+                    "jestrunner.codeLensSelector": {
+                        "type": "string",
+                        "default": "**/*.{test,spec}.{js,jsx,ts,tsx}",
+                        "description": "CodeLens will be shown on files matching this pattern"
+                    },
+                    "jestrunner.enableYarnPnpSupport": {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "Enable if you are using Yarn 2 with Plug'n'Play",
+                        "scope": "window"
+                    },
+                    "jestrunner.detectYarnPnpJestBin": {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "Auto-detect path on Linux/Unix systems to Jest bin (Yarn 2 Pnp)",
+                        "scope": "window"
+                    }
                 }
             }
-        }],
-        "commands": [{
-                "command": "extension.runJest",
-                "title": "Run Jest"
+        ],
+        "commands": [
+            {
+                "command": "extension.runMocha",
+                "title": "Run Mocha"
             },
             {
                 "command": "extension.runPrevJest",
@@ -112,7 +115,8 @@
             }
         ],
         "menus": {
-            "editor/context": [{
+            "editor/context": [
+                {
                     "command": "extension.runJest",
                     "group": "02_jest"
                 },
@@ -139,6 +143,7 @@
     "devDependencies": {
         "@types/jest": "^26.0.13",
         "@types/node": "^14.10.1",
+        "@types/vscode": "^1.51.0",
         "jest": "^26.4.2",
         "prettier": "^2.1.1",
         "ts-jest": "^26.3.0",
