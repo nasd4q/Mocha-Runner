@@ -1,9 +1,9 @@
 {
-    "name": "vscode-jest-runner",
-    "displayName": "Jest Runner",
-    "description": "Simple way to run or debug a single (or multiple) tests from context-menu",
-    "version": "0.4.31",
-    "publisher": "firsttris",
+    "name": "mocha-runner-debugger",
+    "displayName": "Mocha Runner Debugger",
+    "description": "Adds codelenses for running and or debugging mocha tests",
+    "version": "0.0.0",
+    "publisher": "nasd4q",
     "author": "Tristan Teufel",
     "repository": {
         "type": "git",
