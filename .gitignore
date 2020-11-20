@@ -4,3 +4,4 @@ dist/
 coverage/
 .vscode-test/
 .vsix
+mocha-runner-debugger-0.0.0.vsix

@@ -29,3 +29,11 @@ add this:
   "command": "extension.debugMocha"
 },
 ```
+
+
+### Install
+
+* Download zip of projects or git clone it
+* `npm i`
+* `node_modules/.bin/vsce package` to generates vsix file "mocha-runner-debugger-0.0.0.vsix"
+* Open VsCode, ctrl+shift+P 'install from vsix'... -- or -- `code --install-extension [path/to/previously/generated/mocha-runner-debugger-0.0.0.vsix]`

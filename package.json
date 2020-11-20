@@ -5,7 +5,7 @@
     "version": "0.0.0",
     "publisher": "nasd4q",
     "engines": {
-        "vscode": "^1.19.0"
+        "vscode": "^1.51.0"
     },
     "categories": [
         "Productiivity"
@@ -84,6 +84,7 @@
         "tslint-config-prettier": "^1.18.0",
         "tslint-plugin-prettier": "^2.3.0",
         "typescript": "^3.9.3",
+        "vsce": "^1.81.1",
         "vscode": "^1.1.37",
         "vscode-test": "^1.4.1",
         "webpack": "^4.44.2",
