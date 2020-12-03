@@ -9,9 +9,11 @@
             "runtimeExecutable": "${execPath}",
             "args": ["--extensionDevelopmentPath=${workspaceRoot}" ],
             "stopOnEntry": false,
-            "sourceMaps": true,
+            //"sourceMaps": true,
             "outFiles": [ "${workspaceRoot}/dist/*.js" ],
-            "preLaunchTask": "npm: compile"
+            //"preLaunchTask": "npm: compile",
+            "internalConsoleOptions": "openOnSessionStart",
+
         },
         {
             "name": "Extension Tests",
@@ -23,7 +25,8 @@
                 "--extensionTestsPath=${workspaceFolder}/out/test/suite/index"
             ],
             "outFiles": ["${workspaceFolder}/out/test/**/*.js"],
-            "preLaunchTask": "${defaultBuildTask}"
+            //"preLaunchTask": "${defaultBuildTask}",
+            "internalConsoleOptions": "openOnSessionStart",
         }
     ]
 }

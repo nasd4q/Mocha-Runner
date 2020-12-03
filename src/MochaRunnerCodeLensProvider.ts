@@ -15,7 +15,7 @@ export class MochaRunnerCodeLensProvider implements CodeLensProvider {
           d.range.end.line - 1,
           d.range.end.column),
         {
-          arguments: [d.name],
+          arguments: ['"' + d.regexp.toString() + '"'],
           command: 'extension.runMocha',
           title: 'Run'
         }
@@ -27,7 +27,7 @@ export class MochaRunnerCodeLensProvider implements CodeLensProvider {
           d.range.end.line - 1,
           d.range.end.column),
         {
-          arguments: [d.name],
+          arguments: ['"' + d.regexp.toString() + '"'],
           command: 'extension.debugMocha',
           title: 'Debug'
         }

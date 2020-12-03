@@ -63,8 +63,11 @@ export class MochaRunner {
             config = this.provideDefaultDebugConfig();
 
             if (noDebug) {
-                config.internalConsoleOptions = "neverOpen";
-                config.console = "integratedTerminal";
+                //PROBLEM : " symbol is escaped when run from terminal...
+                //          (when providing last argument = the reg exp
+                //              needed to run only one test)
+                //config.internalConsoleOptions = "neverOpen";
+                //config.console = "integratedTerminal";
             }
         }
 
@@ -127,7 +130,7 @@ export class MochaRunner {
             .sort((d1,d2)=> d2.range.start.line - d1.range.start.line);
 
         if (matchingDs.length > 0) {
-            return matchingDs[0].name;
+            return '"' + matchingDs[0].regexp.toString() + '"';
         }
         return undefined;
     }
@@ -144,7 +147,7 @@ export class MochaRunner {
         } */
 
         if (testName) {
-            args.push('-f');
+            args.push('-g');
             args.push(quoter(escapeSingleQuotes(testName)));
         }
 

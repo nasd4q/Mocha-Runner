@@ -8,47 +8,50 @@
         "vscode": "^1.51.0"
     },
     "categories": [
-        "Productiivity"
+        "Testing"
     ],
     "activationEvents": [
         "*"
     ],
-    "main": "./dist/extension",
+    "main": "./out/extension",
     "contributes": {
-        "configuration": [{
-            "title": "Mocha Runner",
-            "properties": {
-                "mochaRunner.mochaPath": {
-                    "type": "string",
-                    "default": "node_modules/.bin/mocha",
-                    "description": "Path to mocha bin file. Can be relative to current workspace, or absolute. \nExample : node_modules/.bin/mocha",
-                    "scope": "window"
-                },
-                "mochaRunner.mochaEnv": {
-                    "type": "object",
-                    "default": {},
-                    "description": "Environment variables that will be set prior to running tests. \nExample: { \"NODE_ENV\": \"test\"} ",
-                    "scope": "window"
-                },
-                "mochaRunner.mochaOpts": {
-                    "type": "array",
-                    "default": [
-                        "--timeout",
-                        "0",
-                        "--colors"
-                    ],
-                    "description": "List of command line args that will be passed to the mocha command. \nExample : [ \"-r\", \"ts-node/register\"]. \nDefaults to [\"--timeout\", \"0\", \"--colors\"]. \n\n NOTA BENE : the value of this setting will override any conflicting value found in a mocha config file (e.g. '.mocharc.js' file).",
-                    "scope": "window"
-                },
-                "mochaRunner.debugConfigName": {
-                    "type": "string",
-                    "default": "Config to be used by Mocha Runner",
-                    "description": "Name of overriding debug configuration (e.g. at ${workspaceFolder}/.vscode/launch.json). \n\nIf a name is provided, and a configuration of same name is found, then this config will be used; and Mocha Path, Mocha Env, Mocha Opts options won't be applied.",
-                    "scope": "window"
+        "configuration": [
+            {
+                "title": "Mocha Runner",
+                "properties": {
+                    "mochaRunner.mochaPath": {
+                        "type": "string",
+                        "default": "node_modules/.bin/mocha",
+                        "description": "Path to mocha bin file. Can be relative to current workspace, or absolute. \nExample : node_modules/.bin/mocha",
+                        "scope": "window"
+                    },
+                    "mochaRunner.mochaEnv": {
+                        "type": "object",
+                        "default": {},
+                        "description": "Environment variables that will be set prior to running tests. \nExample: { \"NODE_ENV\": \"test\"} ",
+                        "scope": "window"
+                    },
+                    "mochaRunner.mochaOpts": {
+                        "type": "array",
+                        "default": [
+                            "--timeout",
+                            "0",
+                            "--colors"
+                        ],
+                        "description": "List of command line args that will be passed to the mocha command. \nExample : [ \"-r\", \"ts-node/register\"]. \nDefaults to [\"--timeout\", \"0\", \"--colors\"]. \n\n NOTA BENE : the value of this setting will override any conflicting value found in a mocha config file (e.g. '.mocharc.js' file).",
+                        "scope": "window"
+                    },
+                    "mochaRunner.debugConfigName": {
+                        "type": "string",
+                        "default": "Config to be used by Mocha Runner",
+                        "description": "Name of overriding debug configuration (e.g. at ${workspaceFolder}/.vscode/launch.json). \n\nIf a name is provided, and a configuration of same name is found, then this config will be used; and Mocha Path, Mocha Env, Mocha Opts options won't be applied.",
+                        "scope": "window"
+                    }
                 }
             }
-        }],
-        "commands": [{
+        ],
+        "commands": [
+            {
                 "command": "extension.runMocha",
                 "title": "Mocha Runner: Run Mocha"
             },
@@ -67,23 +70,24 @@
         ]
     },
     "scripts": {
-        "vscode:prepublish": "webpack --mode production",
+        "vscode:prepublish": "echo ok",
         "compile": "webpack --mode development",
         "watch": "webpack --mode development --watch",
         "postinstall": "node ./node_modules/vscode/bin/install",
         "test": "npm run test-compile && node ./out/test/runTest.js",
         "test-compile": "tsc -p ./",
-        "publish": "vsce publish patch && git push"
+        "publish": "vsce publish patch && git push",
+        "reinstall-mocha-parser": "npm uninstall mocha-parser && npm install mocha-parser",
+        "recompile": "rm -rf out. && tsc -p ./",
+        "vsce-package": "node_modules/.bin/vsce package"
     },
     "devDependencies": {
-        "@types/node": "^14.14.8",
         "@types/vscode": "^1.51.0",
         "prettier": "^2.1.2",
         "ts-loader": "^8.0.11",
         "tslint": "^6.1.3",
         "tslint-config-prettier": "^1.18.0",
         "tslint-plugin-prettier": "^2.3.0",
-        "typescript": "^3.9.3",
         "vsce": "^1.81.1",
         "vscode": "^1.1.37",
         "vscode-test": "^1.4.1",
@@ -96,6 +100,9 @@
         "publisherId": "d3041740-ad00-46e8-87c2-ee28ad76da0f"
     },
     "dependencies": {
-        "mocha-parser": "^1.0.1"
+        "@types/node": "^14.14.10",
+        "mocha-parser": "^1.0.13",
+        "ts-node": "^9.0.0",
+        "typescript": "^4.1.2"
     }
 }
